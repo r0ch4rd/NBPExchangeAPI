@@ -3,16 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBP Currency Exchange</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>NBP Exchange</title>
     <script src="scripts/script.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 </head>
 <body>
-    <input type="number" name="" id="amount">
-    <select name="" id="from"></select>
-    <=>
-    <select name="" id="to"></select>
-    <button id="convert">Convert</button>
-    <p id="output"></p>
+    <div class="container">
+        <h2 class="text-center">NBP Currency Exchange</h2>
+        <form>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
+            </div>
+            <div class="form-group">
+                <label for="fromCurrency">From</label>
+                <select class="form-control" id="from" required>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="toCurrency">To</label>
+                <select class="form-control" id="to" required>
+                </select>
+            </div>
+            <div class="form-group">
+                <span class="output-top text-muted "></span><br>
+                <span class="output-bottom display-4"></span>
+            </div>
+        </form>
+        <button class="btn btn-primary btn-block" id="convert">Convert</button>
+        
+    </div>
+
 </body>
 </html>

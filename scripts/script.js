@@ -32,11 +32,17 @@ async function fillOptions() {
 }
 
 document.querySelector("#convert").addEventListener("click", async function(){
-    let output = document.querySelector("#output");
-    let amount = parseInt(document.querySelector("#amount").value);
+    let outputTop = document.querySelector(".output-top");
+    let outputBottom = document.querySelector(".output-bottom");
+    let amount = parseFloat(document.querySelector("#amount").value);
     let exchangeRates = await getExchangeRates();
     let currencyFrom = document.querySelector("#from").value;
     let currencyTo = document.querySelector("#to").value;
+
+    if(isNaN(amount)){
+        outputTop.innerHTML = "<span style='color: red;'>Amount cannot be empty</span>";
+        return;
+    }
 
     let findCurrencyValue = (currency, exchangeRates) => {
         let returnValue;
@@ -52,7 +58,8 @@ document.querySelector("#convert").addEventListener("click", async function(){
     let currencyFromInPLN = findCurrencyValue(currencyFrom, exchangeRates);
     let currencyToInPLN = findCurrencyValue(currencyTo, exchangeRates);
 
-    output.innerHTML = `${amount} ${currencyFrom} = ${(currencyFromInPLN/currencyToInPLN).toFixed(2)} ${currencyTo}`
+    outputTop.innerHTML = `${amount} ${currencyFrom} =`
+    outputBottom.innerHTML = `${(currencyFromInPLN/currencyToInPLN*amount).toFixed(2)} ${currencyTo}`
 });
 
 fillOptions();
